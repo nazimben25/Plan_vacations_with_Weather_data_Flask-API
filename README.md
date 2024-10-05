@@ -1,10 +1,10 @@
 # python-api-challenge
 
-these repository is the output of Challenge 6 : Python API
+This repository is the output of Challenge 6 : Python API
 
 1) Repository organization
 in the main folder
-- 2 Jupyter files with the final code to run for both parts
+- 2 Jupyter files with the final code to run  both parts
     - WeatherPymywork
     - VacationPymywork
 
@@ -35,7 +35,8 @@ so run (1)  WeatherPymywork than (2) VacationPymywork
 
     2.1.2) retrieve weather data for each city
     a FOR LOOP for each city in the list [cities]
-        - to connect to API http://api.openweathermap.org and JSON FILE generated : city_weather
+        - to connect to API http://api.openweathermap.org 
+        - t generate a JSON FILE  : city_weather
         - if city exist in database OPENWEATHER, data is collected from JSON file city_weather
             * city_lat = city_weather['coord']['lat']
             * city_lng = city_weather['coord']['lon']
@@ -46,9 +47,11 @@ so run (1)  WeatherPymywork than (2) VacationPymywork
             * city_country = city_weather['sys']['country']
             * city_date = city_weather['dt']
 
-    A list city_data is appended wit these information : Index(['City', 'Latitude', 'Lng', 'Temperature', 'Humidity', 'Cloudiness',
+    A list [city_data] is appended wit this data : Index(['City', 'Latitude', 'Lng', 'Temperature', 'Humidity', 'Cloudiness',
        'Wind Speed', 'Country', 'Date'],
       dtype='object')
+    
+    this step can last more than 10 minutes (Be patient!)
 
     2.2.3) create a dataframe
     from list city_data 
@@ -65,7 +68,6 @@ so run (1)  WeatherPymywork than (2) VacationPymywork
         4 png files are generated : "output_data/Figx.png"
 
     2.2.5) separate between north and south Hemisphere
-    using the csv file generated in the step above
 
         2.2.5.1) calculate Regression and create scatter plots
         same variables with distinction between N and S
