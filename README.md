@@ -23,7 +23,24 @@ so run (1)  WeatherPymywork than (2) VacationPymywork
 
 2.1) code WeatherPymywork
 
-    2.1.1.) generate cities list
+    2.1.0) # Dependencies and Setup
+    
+        import matplotlib.pyplot as plt
+        import pandas as pd
+        import numpy as np
+        import requests
+        import time
+        from scipy.stats import linregress
+
+        # Impor the OpenWeatherMap API key
+        from api_keys import weather_api_key
+
+        # Import citipy to determine the cities based on latitude and longitude
+        from citipy import citipy
+
+        from pprint import pprint
+
+    2.1.1) generate cities list
         a set of 1500 positions (lat, lon) is randomly regenerated 
         
         FOR LOOP for each position is matched with the cities database to insure it represents or not a city (function citipy.nearest_city)
@@ -53,12 +70,12 @@ so run (1)  WeatherPymywork than (2) VacationPymywork
     
     this step can last more than 10 minutes (Be patient!)
 
-    2.2.3) create a dataframe
+    2.1.3) create a dataframe
     from list city_data 
         - the DF is exported in a CVS file : "output_data/cities.csv"
 
 
-    2.2.4) Analysis / vizualisation
+    2.1.4) Analysis / vizualisation
 
         2.2.4.1) Create 4 Scatter plots
         with full data
@@ -67,14 +84,14 @@ so run (1)  WeatherPymywork than (2) VacationPymywork
         2.2.4.2) export to file
         4 png files are generated : "output_data/Figx.png"
 
-    2.2.5) separate between north and south Hemisphere
+    2.1.5) separate between north and south Hemisphere
 
-        2.2.5.1) calculate Regression and create scatter plots
+        2.1.5.1) calculate Regression and create scatter plots
         same variables with distinction between N and S
             - create 8 scatter plots 
             - calculate regression for each
 
-        2.2.4.3) create function 
+        2.1.5.2) create function 
         the step (2.2.5.1) is performed with a function called regression_plot, it
             - calculates Regression parameters (with function linregress)
             - generates scatter plot
@@ -82,8 +99,55 @@ so run (1)  WeatherPymywork than (2) VacationPymywork
             - the Annotation + Title are conditional regarding the slope or the hemisphere
 
 
-2.1) code VacationPymywork
-using the csv file generated in the step above (2.2.3)
+2.2) code VacationPymywork
+
+    2.2.0 -a)
+        # Dependencies and Setup
+        import hvplot.pandas
+        import pandas as pd
+        import requests
+
+        # Import API key
+        from api_keys import geoapify_key
+
+        import json  # Import the json module to handle JSON data
+
+        using the csv file generated in the step above (2.2.3)
+
+    2.2.0 - b) Resources
+    use the file generated in step (2.1.3)
+    stored as "output_data/cities.csv"
+
+    2.2.1) create map
+    with the data in the file more than 500 entries 
+    generate a map using  hvplot.points
+
+    2.2.2) filter the prefered city and create new DataFrame
+    the data is filtred regarding personnal parameters : temperature, humidity, cloudiness
+
+    a new DF is generated : my_city_df
+
+    than a copy is ccreated with additional column : Copy = hotel_df
+
+    2.2.3) for each city, identify the nearest hotel
+
+    using "https://api.geoapify.com/v2/places"
+        - loop for each row of hotel_df
+        - build a end point to request the API to retrieve
+            - coordinates from hotel_df
+            - 1st hotels search in a circle of 10,000 meters
+        - download a JSON file
+        - extract the name of the hotel from the JSON file
+        - fill the new column of hotel_df with the hotel name
+    
+    a call exception TRY -EXCEPT is used
+
+
+    2.2.4) create a new map ad add information in hover
+    with hotel_df
+    generate a map using  hvplot.points
+    adding columns 'Country' + 'hotel name' to the hover
+
 
 
 
