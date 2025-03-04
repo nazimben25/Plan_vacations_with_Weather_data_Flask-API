@@ -1,4 +1,9 @@
-# python-api-challenge
+# Using Python scripts and FLASK API
+# Visualize the weather of over 500 cities of varying distances from the equator and generate a visualization. 
+# Use your weather data skills to plan future vacations
+
+
+## python-api-challenge
 
 This repository is the output of Challenge 6 : Python API
 
