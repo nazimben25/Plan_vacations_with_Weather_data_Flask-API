@@ -1,4 +1,4 @@
-# Using Python scripts and FLASK API
+# Using Python scripts
 # Visualize the weather of over 500 cities of varying distances from the equator and generate a visualization. 
 # Use your weather data skills to plan future vacations
 
